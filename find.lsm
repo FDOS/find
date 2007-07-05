@@ -1,0 +1,14 @@
+Begin3
+Title:          find
+Version:        01nov2003
+Entered-date:   2004-07-06
+Description:    Display all lines in one or more files that contain a given
+  string, inverse and case-insensitive search possible as well.
+Keywords:       freedos, find, grep
+Author:         Jim Hall &lt;jhall -at- freedos.org&gt;
+Maintained-by:  Eric Auer eric -at- coli.uni-sb.de
+Primary-site:   http://www.coli.uni-sb.de/~eric/stuff/soft/
+Alternate-site: http://www.coli.uni-sb.de/~eric/stuff/soft/
+Platforms:      DOS (e.g. Borland Turbo C), includes own KITTEN library version
+Copying-policy: GPL 2
+End
