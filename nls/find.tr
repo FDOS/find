@@ -1,10 +1,10 @@
-0.0:Bir dosyann verilen diziyi i‡eren tm satrlarn yazdrr
-0.1:Diziyi i‡eren satrlar sayar
-0.2:BšYšK/k‡k harf yok say
-0.3:G”rntlenen satrlar 1. satrdan baŸlayarak numaralandr
-0.4:Diziyi i‡ermeyen satrlar yazdr
+0.0:Bir dosyanÄ±n verilen diziyi iÃ§eren tÃ¼m satÄ±rlarÄ±nÄ± yazdÄ±rÄ±r
+0.1:Diziyi iÃ§eren satÄ±rlarÄ± sayar
+0.2:BÃœYÃœK/kÃ¼Ã§Ã¼k harf yok say
+0.3:GÃ¶rÃ¼ntÃ¼lenen satÄ±rlarÄ± 1. satÄ±rdan baÅŸlayarak numaralandÄ±r
+0.4:Diziyi iÃ§ermeyen satÄ±rlarÄ± yazdÄ±r
 1.0:dosya
 1.1:dizi
-2.0:Dosya a‡lamyor
-2.1:B”yle bir dosya yok
-2.2:Dizine ge‡ilemiyor
+2.0:Dosya aÃ§Ä±lamÄ±yor
+2.1:BÃ¶yle bir dosya yok
+2.2:Dizine geÃ§ilemiyor
