@@ -108,7 +108,7 @@ find_str (unsigned char *sz, int thefile,
                 doss.es = FP_SEG(&upcasebuf);
                 dosr.x.di = FP_OFF(&upcasebuf);
                 intdosx(&dosr,&dosr,&doss);
-                if ((dosr.x.flags & 1) == 1) {
+                if ((dosr.x.cflag) == 1) {
                     /* upcasetab still NULL */ /* bad luck! */
                 } else {
                     /* ... CX is returned as table length ... */
