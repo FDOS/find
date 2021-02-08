@@ -311,7 +311,7 @@ usage (nl_catd cat)
 {
   char *s;
 
-  if (cat != cat) {}; /* avoid unused argument error message in kitten */
+  (void)cat; /* avoid unused argument error message in kitten */
 
   strWrite("FreeDOS Find, version 2.9\r\n"); /* NEW VERSION */
   strWrite(
