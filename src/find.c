@@ -79,7 +79,7 @@ main (int argc, char **argv)
 
   /* char drv[MAXDRIVE]; */		/* temporary buffer */
   unsigned drv;				/* drive found in argument */
-  /* unsigned maxdrives; */		/* not used */
+  unsigned maxdrives;
 
   int invert_search = 0;		/* flag to invert the search */
   int count_lines = 0;			/* flag to whether/not count lines */
@@ -161,8 +161,7 @@ main (int argc, char **argv)
      drive & cwd at the end.  This is probably not the most efficient
      way of doing it, but it works.  -jh */
 
-  /* _dos_getdrive (&drive); */		/* 1 for A, 2 for B, ... */
-  drive = getdisk() + 1; /* uses dir.h */
+  _dos_getdrive (&drive); 		/* 1 for A, 2 for B, ... */
   getcwd (cwd, MAXDIR);			/* also stores drive letter */
 
 #if 0 /* debugging */
@@ -232,11 +231,7 @@ main (int argc, char **argv)
 
 	      /* set cwd to the filemask */
 
-	      /* _dos_setdrive (('A' - drv[0] + 1), &maxdrives); */
-	      /* this was the wrong way round! */
-
-	      (void) setdisk (drv /* drv[0] - 'A' */); /* dir.h */
-	      
+	      _dos_setdrive (drv + 1, &maxdrives);
 	      getcwd(cwd2,MAXDIR); /* remember cwd here, too */
 
 	      if (chdir (thiscwd) < 0) {
@@ -276,8 +271,7 @@ main (int argc, char **argv)
 
 	      chdir (cwd2); /* restore cwd on THAT drive */
 
-	      /* _dos_setdrive (drive, &maxdrives); */
-	      (void) setdisk (drive - 1); /* dir.h */
+	      _dos_setdrive (drive, &maxdrives);
 	      chdir (cwd);
 
 	      /* find next file to match the filemask */
