@@ -47,6 +47,11 @@
 #define findnext(buf) _dos_findnext((struct find_t *)(buf))
 #endif
 
+#if defined(__GNUC__)
+#include <libi86/stdlib.h>
+#define far __far
+#endif
+
 #include "find_str.h"			/* find_str() back-end */
 
 #if 1
