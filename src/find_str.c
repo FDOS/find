@@ -25,7 +25,8 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h> /* ltoa */
-#include "kitten.h"
+
+#include "../kitten/kitten.h"
 
 #ifdef __MSDOS__
 #include <dos.h> /* intdosx */
