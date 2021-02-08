@@ -28,6 +28,10 @@
 
 #include "../kitten/kitten.h"
 
+#ifndef __TURBOC__
+#include <unistd.h>
+#endif
+
 #ifdef __MSDOS__
 #include <dos.h> /* intdosx */
 
