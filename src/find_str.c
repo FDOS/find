@@ -32,6 +32,11 @@
 #include <unistd.h>
 #endif
 
+#if defined(__GNUC__)
+#include <libi86/stdlib.h>
+#define far __far
+#endif
+
 #ifdef __MSDOS__
 #include <dos.h> /* intdosx */
 
