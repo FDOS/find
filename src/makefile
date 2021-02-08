@@ -33,7 +33,7 @@ all: find.com
 # no space between -e and find (set exe file name)!
 # upx either find.com or find.exe, depends...
 
-find.com: $(CFILES) kitten.c makefile
+find.com: $(CFILES) ../kitten/kitten.c makefile
 	$(CC) $(CFLAGS)find $(CFILES) kitten.c
 	$(UPX) find.com
 

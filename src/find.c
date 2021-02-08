@@ -34,7 +34,7 @@
 #include "find_str.h"			/* find_str() back-end */
 
 #if 1
-#include "kitten.h"			/* Kitten message library */
+#include "../kitten/kitten.h"		/* Kitten message library */
 #else
 #include "catgets.h"			/* Cats message library */
 #endif
