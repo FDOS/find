@@ -202,9 +202,14 @@ find_str (unsigned char *sz, int thefile,
 	    {
 	      if (number_output) {
 		/* printf ("%ld:", line_number); */
+#if defined(__GNUC__)
+		i = sprintf(numbuf, "%ld:", line_number); /* no ltoa */
+		write(1, numbuf, i);
+#else
 		ltoa(line_number, numbuf, 10);
 		write(1,numbuf,strlen(numbuf));
 		write(1,":",1);
+#endif
 	      }
 
 	      /* Print the line of text, after adding \r\n\0 */
@@ -225,9 +230,14 @@ find_str (unsigned char *sz, int thefile,
     {
       /* Just show num. lines that contain the string */
       /* printf ("%ld\n", total_lines); */
+#if defined(__GNUC__)
+      i = sprintf(numbuf, "%ld\n", total_lines); /* no ltoa */
+      write(1, numbuf, i);
+#else
       ltoa(total_lines, numbuf, 10);
       write(1,numbuf,strlen(numbuf));
       write(1,"\r\n",2);
+#endif
     }
 
 
