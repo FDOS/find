@@ -28,8 +28,24 @@
 #include <string.h>
 #include <ctype.h>
 
-#include <dir.h>			/* for findfirst, findnext */
 #include <dos.h>			/* for findfirst, findnext */
+
+#ifdef __TURBOC__
+#include <dir.h>			/* for findfirst, findnext */
+#else
+#include <unistd.h>
+#endif
+
+#ifdef __WATCOMC__
+#include <io.h>				/* for findfirst, findnext */
+/* redefine struct name */
+#define ffblk find_t
+/* rename one of the member of that struct */
+#define ff_name name
+#define findfirst(pattern, buf, attrib) \
+  _dos_findfirst((pattern), (attrib), (struct find_t *)(buf))
+#define findnext(buf) _dos_findnext((struct find_t *)(buf))
+#endif
 
 #include "find_str.h"			/* find_str() back-end */
 
