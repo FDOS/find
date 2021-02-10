@@ -22,7 +22,6 @@
  * that contain the string.  Multiple files are clearly separated.
  */
 
-#include <stdio.h>
 #include <stdlib.h>			/* borland needs this for 'exit' */
 #include <fcntl.h>			/* O_RDONLY */
 #include <string.h>
