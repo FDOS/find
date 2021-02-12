@@ -33,10 +33,6 @@
 #include <dir.h>			/* for findfirst, findnext */
 #else
 #include <unistd.h>
-#endif
-
-#ifdef __WATCOMC__
-#include <io.h>				/* for findfirst, findnext */
 /* redefine struct name */
 #define ffblk find_t
 /* rename one of the member of that struct */
@@ -44,6 +40,10 @@
 #define findfirst(pattern, buf, attrib) \
   _dos_findfirst((pattern), (attrib), (struct find_t *)(buf))
 #define findnext(buf) _dos_findnext((struct find_t *)(buf))
+#endif
+
+#if defined(__WATCOMC__)
+#include <io.h>				/* for findfirst, findnext */
 #endif
 
 #if defined(__GNUC__)
