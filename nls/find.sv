@@ -8,3 +8,4 @@
 1.1:sträng
 2.0:Kan inte öppna filen
 2.1:Ingen sådan fil
+2.2:Kan inte byta till katalog
