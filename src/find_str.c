@@ -76,16 +76,16 @@ unsigned char far * upcasetab = NULL;
  */
 
 /* save some stack space: */
-  unsigned char temp_str[MAX_STR];
-  unsigned char this_line[MAX_STR+3]; /* extra space for \r\n\0 */
+char temp_str[MAX_STR];
+char this_line[MAX_STR+3]; /* extra space for \r\n\0 */
 
 int
-find_str (unsigned char *sz, int thefile,
+find_str (char *sz, int thefile,
        int invert_search, int count_lines, int number_output, int ignore_case)
 {
   int i, length;
   long line_number = 0, total_lines = 0;
-  unsigned char *c;
+  char *c;
   char numbuf[16]; /* for itoa */
 
 #ifdef __MSDOS__
