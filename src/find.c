@@ -54,6 +54,7 @@
 #include "find_str.h"			/* find_str() back-end */
 
 #include "../kitten/kitten.h"		/* Kitten message library */
+#include "../tnyprntf/tnyprntf.h"
 
 
 /* Functions */
@@ -217,12 +218,7 @@ main (int argc, char **argv)
 		 set the exit status. */
 
 	      s = catgets (cat, 2, 1, "No such file");
-	      /* printf ("FIND: %s: %s\n", argv[i], s); */
-	      write(1,"FIND: ",6);
-	      write(1,argv[i],strlen(argv[i]));
-              write(1,": ",2);
-	      write(1,s,strlen(s));
-	      write(1,"\r\n",2);
+	      PRINTF("FIND: %s: %s\n", argv[i], s);
 	    }
 
 	  while (!done)
@@ -236,22 +232,14 @@ main (int argc, char **argv)
 
 	      if (chdir (thiscwd) < 0) {
 		  s = catgets (cat, 2, 2, "Cannot change to directory");
-		  /* printf ("FIND: %s: %s\n", argv[i], s); */
-	          write(1,"FIND: ",6);
-	          write(1,argv[i],strlen(argv[i]));
-	          write(1,": ",2);
-	          write(1,s,strlen(s));
-	          write(1,"\r\n",2);
+		  PRINTF("FIND: %s: %s\n", argv[i], s);
 	      };
 
 	      /* open the file, or not */
 
 	      if ((thefile = open (ffblk.ff_name, O_RDONLY)) != -1)
 		{
-		  /* printf ("---------------- %s\n", ffblk.ff_name); */
-	          write(1,"---------------- ",17);
-	          write(1,ffblk.ff_name,strlen(ffblk.ff_name));
-	          write(1,"\r\n",2);
+		  PRINTF("---------------- %s\n", ffblk.ff_name);
 		  ret = find_str (needle, thefile, invert_search, count_lines, number_output, ignore_case);
 		  close (thefile);
 		}
@@ -259,12 +247,7 @@ main (int argc, char **argv)
 	      else
 		{
 		  s = catgets (cat, 2, 0, "Cannot open file");
-		  /* printf ("FIND: %s: %s\n", argv[i], s); */
-	          write(1,"FIND: ",6);
-	          write(1,argv[i],strlen(argv[i]));
-	          write(1,": ",2);
-	          write(1,s,strlen(s));
-	          write(1,"\r\n",2);
+		  PRINTF("FIND: %s: %s\n", argv[i], s);
 		}
 
 	      /* return the cwd */
@@ -296,55 +279,36 @@ main (int argc, char **argv)
 
 }
 
-
-#define strWrite(st) write(1,st,strlen(st));
-
 /* Show usage */
 
 void
 usage (nl_catd cat)
 {
-  char *s;
+  char *s, *s2;
 
   (void)cat; /* avoid unused argument error message in kitten */
 
-  strWrite("FreeDOS Find, version 2.9\r\n"); /* NEW VERSION */
-  strWrite(
-    "GNU GPL - copyright 1994-2002 Jim Hall <jhall@freedos.org>\r\n");
-  strWrite(
-    "          copyright 2003 Eric Auer <eric@coli.uni-sb.de>\r\n\r\n");
+  PRINTF("FreeDOS Find, version 2.9\n");
+  PRINTF("GNU GPL - copyright 1994-2002 Jim Hall <jhall@freedos.org>\n");
+  PRINTF("          copyright 2003 Eric Auer <eric@coli.uni-sb.de>\n\n");
 
   s = catgets (cat, 0, 0, "Prints all lines of a file that contain a string");
-  strWrite("FIND: ");
-  strWrite(s);
-  strWrite("\r\n");
+  PRINTF("FIND: %s\n", s);
 
   s = catgets (cat, 1, 1, "string");
-  strWrite("FIND [ /C ] [ /I ] [ /N ] [ /V ] \"");
-  strWrite(s);
-  strWrite("\" [ ");
-  s = catgets (cat, 1, 0, "file");
-  strWrite(s);
-  strWrite("... ]\r\n");
+  s2 = catgets (cat, 1, 0, "file");
+  PRINTF("FIND [ /C ] [ /I ] [ /N ] [ /V ] \"%s\" [ %s ... ]\n", s, s2);
 
   s = catgets (cat, 0, 1, "Only count the matching lines");
-  strWrite("  /C  ");
-  strWrite(s);
-  strWrite("\r\n");
+  PRINTF("  /C  %s\n", s);
 
   s = catgets (cat, 0, 2, "Ignore case");
-  strWrite("  /I  ");
-  strWrite(s);
-  strWrite("\r\n");
+  PRINTF("  /I  %s\n", s);
 
   s = catgets (cat, 0, 3, "Show line numbers");
-  strWrite("  /N  ");
-  strWrite(s);
-  strWrite("\r\n");
+  PRINTF("  /N  %s\n", s);
 
   s = catgets (cat, 0, 4, "Print lines that do not contain the string");
-  strWrite("  /V  ");
-  strWrite(s);
-  strWrite("\r\n");
+  PRINTF("  /V  %s\n", s);
 }
 
